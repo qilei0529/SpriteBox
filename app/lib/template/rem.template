@@ -1,0 +1,17 @@
+@mixin sprite($name){
+    @extend %Sprite-#{$name};
+}
+
+{{#spritesheet}}
+%Sprite-img-{{spritesheet.name}}{
+    background:url(img/sprite.png) no-repeat;
+    background-size:rem({{spritesheet.width}}) rem({{spritesheet.height}});
+}
+{{/spritesheet}}
+
+{{#items}}
+%Sprite-{{name}}{
+    @extend %Sprite-img-{{spritesheet.name}};
+    background-position: rem({{x}}) rem(-{{y}});
+}
+{{/items}}

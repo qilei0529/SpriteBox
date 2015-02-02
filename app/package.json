@@ -1,0 +1,15 @@
+{
+  "name": "SpriteBox",
+  "description": "this is a tool for JDC",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twolfson/gulp.spritesmith.git"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "spritesmith": "~0",
+    "spritesheet-templates": "~8.2.0"
+  }
+}

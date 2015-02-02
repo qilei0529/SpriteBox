@@ -1,0 +1,15 @@
+{
+  "name": "JDC",
+  "main": "app/index.html",
+  "version": "1.0.0",
+  "window": {
+    "titlebar":true,
+    "toolbar": false,
+    "width": 600,
+    "height": 400,
+    "resizable":true,
+    "show_in_taskbar":true,
+    "frame":true,
+    "kiosk":false
+  }
+}

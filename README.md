@@ -27,6 +27,10 @@
 
 把需要合并的图片拖入即可
 
+Sass 引用代码
+
+	@include sprite('icon-name') //icon-name 就是icon名称
+
 ###截图
 
 ![shot](demo/shot.png)

@@ -31,7 +31,7 @@ var Sprite = {
             files   : files,
             padding : 10,
             scale   : 2,
-            // tmp     : true,
+            tmp     : true,
             cb      : call,
             error   : err,
             template: 'rem'
@@ -141,9 +141,70 @@ Body = {
     }
 }
 
+
+var Menu = {
+    init : function(){
+        var gui = require('nw.gui');
+        var target = document.querySelector('#J_code');
+
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            console.log(e);
+            if (e.target == target) {
+                var selectionType = window.getSelection().type.toUpperCase();
+                var clipData = gui.Clipboard.get().get();
+                menu.canPaste(clipData.length > 0);
+                menu.canCopy(selectionType === 'RANGE');
+                menu.popup(e.clientX, e.clientY);
+            };
+        });
+
+        function Menu() {
+            this.menu = new gui.Menu();
+            this.cut = new gui.MenuItem({
+                label: 'Cut',
+                click: function () {
+                document.execCommand('cut');
+                }
+            });
+            this.copy = new gui.MenuItem({
+                label: 'Copy',
+                click: function () {
+                    document.execCommand('copy');
+                }
+            });
+            this.paste = new gui.MenuItem({
+                label: 'Paste',
+                click: function () {
+                    document.execCommand('paste');
+                }
+            });
+            this.menu.append(this.cut);
+            this.menu.append(this.copy);
+            this.menu.append(this.paste);
+        }
+
+        var menu = new Menu();
+
+
+        Menu.prototype.canCopy = function (bool) {
+            this.cut.enabled = false;
+            this.copy.enabled = false;
+        };
+        Menu.prototype.canPaste = function (bool) {
+            this.paste.enabled = false;
+        };
+        Menu.prototype.popup = function (x, y) {
+            this.menu.popup(x, y);
+        };
+
+    }
+}
+
 Sprite.init();
 Box.init();
 Body.init();
+Menu.init();
 
 
 

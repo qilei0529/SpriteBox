@@ -226,6 +226,15 @@ var get_css = function(){
     // console.log('cssStr' , cssStr);
     _result.cssStr = cssStr;
 
+
+    if(Data.tmp){
+        //create tmp folder
+        init_tmp(Data.path + '/tmp/');
+        p = Data.path + '/tmp/';
+        var output = p + 'sprite.scss';
+        fs.writeFileSync(output, cssStr, 'binary');
+    }
+
     // css callback
     if(_cssCB){
         _cssCB(_result);
@@ -267,8 +276,8 @@ S.init = function(c){
     _open = check_files();
 
     Data.tmp        = c.tmp || false;
-    //create tmp folder
     if(Data.tmp){
+        //create tmp folder
         init_tmp(Data.path + '/tmp/');
     }
 
